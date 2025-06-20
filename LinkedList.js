@@ -38,7 +38,7 @@ class LinkedList {
 			numNodes++;
 			currentNode = currentNode.nextNode;
 		}
-		return numNodes;
+		return `The list is: ${numNodes} nodes long`;
 	}
 
 	head() {
@@ -61,13 +61,17 @@ class LinkedList {
 
 	at(index) {
 		// returns the node at the given index
+		let currentNode = this.headNode;
+		let i = 0;
+
 		while (currentNode) {
-			if (currentNode.nextNode === null) {
-				
-			}
+			if (index === i) {
+				return `Index ${i} contains ${currentNode.value}`;
+			} 
 			currentNode = currentNode.nextNode;
+			i++;
 		}
-		
+		return `Index ${index} is not in the list.`;
 	}
 
 	pop() {
@@ -84,10 +88,29 @@ class LinkedList {
 
 	contains(value) {
 		// returns true if the passed in value is in the list and otherwise returns false
+		let currentNode = this.headNode;
+		while (currentNode) {
+			if (currentNode.value === value) {
+				return true;
+			} 
+			currentNode = currentNode.nextNode;
+		}
+		return false;
 	}
 
 	find(value) {
 		// returns the index of the node containing value, or null if not found
+		let currentNode = this.headNode;
+		let i = 0;
+
+		while (currentNode) {
+			if (currentNode.value === value) {
+				return `${value} is at index ${i}`;
+			}
+			currentNode = currentNode.nextNode;
+			i++;
+		}
+		return `${value} is not in the list.`;
 	}
 
 	toString() {
